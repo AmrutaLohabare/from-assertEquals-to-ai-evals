@@ -1,9 +1,9 @@
 # From assertEquals() to AI Evals
 
-> Same input. Same output. Nine years of my test cases are built on that one rule.
+> Same input. Same output. Ten years of my test cases are built on that one rule.
 > Then I started learning to test AI.
 
-I'm a Senior SDET with about 9 years of UI, API and performance testing. This repo is my public learning journal as I learn to test AI systems: LLMs, chatbots, RAG pipelines and agents.
+I'm a Senior SDET with about 10 years of UI, API and performance testing. This repo is my public learning journal as I learn to test AI systems: LLMs, chatbots, RAG pipelines and agents.
 
 Every week I publish:
 
