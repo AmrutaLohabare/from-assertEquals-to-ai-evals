@@ -1,0 +1,30 @@
+# Secrets: never commit API keys
+.env
+.env.*
+!.env.example
+*.key
+secrets.*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.pytest_cache/
+.deepeval/
+
+# Node / promptfoo
+node_modules/
+.promptfoo/
+promptfoo-output*
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
