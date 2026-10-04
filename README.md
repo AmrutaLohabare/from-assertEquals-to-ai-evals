@@ -5,7 +5,7 @@
 
 I'm a Senior SDET with about 10 years of UI, API and performance testing. This repo is my public learning journal as I learn to test AI systems: LLMs, chatbots, RAG pipelines and agents.
 
-Every week I publish:
+For every session I publish:
 
 - **Notes**: what I learned, what I tried, and what confused me
 - **Assignments**: prompts, configs, test code and screenshots
@@ -17,10 +17,10 @@ All assignments are done on open, public platforms and public AI tools. No work 
 
 ## Journey index
 
-| Week | Topic | Key lesson | Notes | Write-up |
+| Session | Topic | Key lesson | Notes | Write-up |
 |------|-------|------------|-------|----------|
 | 1 | What is AI/ML, from a tester's view | An LLM predicts what *sounds* right. It doesn't know what *is* right. | [week-01](./week-01-what-is-ai/) | [Medium](https://medium.com/@amrutalohabare/37fb43b62e14) |
-| 2 | Tokens, probabilities and temperature | _coming soon_ | | |
+| 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) | _Medium link coming_ |
 | 3 | AI architecture: what we actually test | _coming soon_ | | |
 | 4 | Prompt engineering fundamentals | _coming soon_ | | |
 | 5 | Prompt testing: finding where prompts break | _coming soon_ | | |

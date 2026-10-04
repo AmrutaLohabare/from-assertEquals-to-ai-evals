@@ -1,6 +1,6 @@
 # Week 1: What is AI/ML, from a tester's view
 
-**Write-up:** [I've Tested Software for 9 Years. Week 1 of AI Testing Broke My Favourite Assertion.](https://medium.com/@amrutalohabare/37fb43b62e14)
+**Write-up:** [I've Tested Software for 10 Years. Week 1 of AI Testing Broke My Favourite Assertion.](https://medium.com/@amrutalohabare/37fb43b62e14)
 
 ## The one idea
 
