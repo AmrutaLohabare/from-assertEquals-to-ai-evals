@@ -20,7 +20,7 @@ All assignments are done on open, public platforms and public AI tools. No work 
 | Session | Topic | Key lesson | Notes | Write-up |
 |------|-------|------------|-------|----------|
 | 1 | What is AI/ML, from a tester's view | An LLM predicts what *sounds* right. It doesn't know what *is* right. | [week-01](./week-01-what-is-ai/) | [Medium](https://medium.com/@amrutalohabare/37fb43b62e14) |
-| 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) | _Medium link coming_ |
+| 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) | [Medium](https://medium.com/@amrutalohabare/tokens-set-the-cost-probability-picks-the-word-temperature-decides-the-risk-d87c197e9d50) |
 | 3 | AI architecture: what we actually test | _coming soon_ | | |
 | 4 | Prompt engineering fundamentals | _coming soon_ | | |
 | 5 | Prompt testing: finding where prompts break | _coming soon_ | | |
