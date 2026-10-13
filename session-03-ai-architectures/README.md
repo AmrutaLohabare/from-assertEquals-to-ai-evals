@@ -1,6 +1,6 @@
 # Session 3: AI application architectures
 
-**Write-up:** [Every AI Chatbot Looks the Same. The Bugs Don't.](https://medium.com/@amrutalohabare) _(link updated once published)_
+**Write-up:** [Every AI Chatbot Looks the Same. The Bugs Don't.](https://medium.com/@amrutalohabare/every-ai-chatbot-looks-the-same-the-bugs-dont-e0c2f7a4dd21)
 
 ## Concepts
 
