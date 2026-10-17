@@ -1,7 +1,5 @@
 # Session 4: Prompt engineering fundamentals
 
-**Write-up:** [Six Rules in the Prompt. One Lie Was Enough.](https://medium.com/@amrutalohabare) _(link updated once published)_
-
 ## Concepts
 
 **Why testers need prompt engineering**
