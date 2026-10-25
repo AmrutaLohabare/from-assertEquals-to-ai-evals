@@ -22,8 +22,8 @@ All assignments are done on open, public platforms and public AI tools. No work 
 | 1 | What is AI/ML, from a tester's view | An LLM predicts what *sounds* right. It doesn't know what *is* right. | [week-01](./week-01-what-is-ai/) | [Medium](https://medium.com/@amrutalohabare/37fb43b62e14) |
 | 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) | [Medium](https://medium.com/@amrutalohabare/tokens-set-the-cost-probability-picks-the-word-temperature-decides-the-risk-d87c197e9d50) |
 | 3 | AI architecture: what we actually test | Know the type (LLM, RAG, agent) before you write a single test. | [session-03](./session-03-ai-architectures/) | [Medium](https://medium.com/@amrutalohabare/every-ai-chatbot-looks-the-same-the-bugs-dont-e0c2f7a4dd21) |
-| 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) | _Medium link coming_ |
-| 5 | Prompt testing: finding where prompts break | _coming soon_ | | |
+| 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) | [Medium](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975) |
+| 5 | Prompt failure classification | The most dangerous bug can be the most helpful-sounding answer. | [session-05](./session-05-prompt-failure-classification/) | _Medium link coming_ |
 | 6 | Structured outputs and output validation | _coming soon_ | | |
 | 7 | promptfoo: setup, config and first eval | _coming soon_ | | |
 | 8 | promptfoo: assertions and LLM-as-judge | _coming soon_ | | |

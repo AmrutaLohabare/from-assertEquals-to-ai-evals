@@ -1,6 +1,6 @@
 # Session 4: Prompt engineering fundamentals
 
-**Write-up:** [Six Rules in the Prompt. One Lie Was Enough.](https://medium.com/@amrutalohabare) _(link updated once published)_
+**Write-up:** [I Told My HR Bot a Lie. It Emailed the Whole Company.](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975)
 
 ## Concepts
 
