@@ -1,7 +1,10 @@
 # Session 4: Prompt engineering fundamentals
 
+<<<<<<< HEAD
 **Write-up:** [I Told My HR Bot a Lie. It Emailed the Whole Company.](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975)
 
+=======
+>>>>>>> a4c93e7fe498e58d2c41c7d266c10f39a236a8b2
 ## Concepts
 
 **Why testers need prompt engineering**
