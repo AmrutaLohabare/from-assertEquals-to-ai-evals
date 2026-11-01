@@ -24,7 +24,7 @@ All assignments are done on open, public platforms and public AI tools. No work 
 | 3 | AI architecture: what we actually test | Know the type (LLM, RAG, agent) before you write a single test. | [session-03](./session-03-ai-architectures/) | [Medium](https://medium.com/@amrutalohabare/every-ai-chatbot-looks-the-same-the-bugs-dont-e0c2f7a4dd21) |
 | 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) | [Medium](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975) |
 | 5 | Prompt failure classification | The most dangerous bug can be the most helpful-sounding answer. | [session-05](./session-05-prompt-failure-classification/) | _Medium link coming_ |
-| 6 | Structured outputs and output validation | _coming soon_ | | |
+| 6 | Structured outputs and output validation | Valid JSON isn't reliable JSON; check structure, schema, types and values on every run. | [session-06](./session-06-structured-outputs/) | |
 | 7 | promptfoo: setup, config and first eval | _coming soon_ | | |
 | 8 | promptfoo: assertions and LLM-as-judge | _coming soon_ | | |
 | 9 | Python foundations for AI testing | _coming soon_ | | |
