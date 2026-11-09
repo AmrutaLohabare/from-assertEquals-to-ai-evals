@@ -97,7 +97,6 @@
 
 - **"Valid JSON" isn't the same as "correct JSON."** Every successful run parsed, but `intent` meant something different each time.
 - **Whose failure is a 400?** The model never saw my prompt. It's still a test case, just for a different layer.
-- **I only ran 2 prompts.** The brief asked for 5 prompts × 3 runs; even 2 were enough to see format and value drift.
 
 ## What I'm taking into the next session
 

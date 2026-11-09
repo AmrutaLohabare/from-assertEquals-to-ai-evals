@@ -1,0 +1,42 @@
+# Session 7, run 2: the 2 questions with the weakest asserts in run 1, re-run with llm-rubric values.
+# Run:  npx promptfoo@latest eval -c promptfooconfig-strict.yaml
+# API keys go in .env, never in this file.
+
+prompts:
+  - |
+    You are a helpful customer support agent for an
+    e-commerce store. Answer accurately and concisely.
+    If you don't know something, say so honestly. Do not
+    make up policies, prices or programs.
+    Customer question: {{question}}
+
+providers:
+  - openai:chat:gpt-4o
+  - openai:chat:gpt-4o-mini
+  # - google:gemini-2.5-flash
+
+tests:
+  - vars:
+      question: "What is your return policy?"
+    assert:
+      - type: icontains
+        value: "return" # RETURN or return or Return
+      -  type: llm-rubric
+         value: >
+          The response should either (a) state a specific, plausible return
+          policy if store policy information was provided in context, or
+          (b) honestly acknowledge that it does not have access to the
+          specific return policy and suggest the customer check the store's
+          website or contact support directly. The response must NOT
+          confidently state specific numeric details (like a number of days)
+          that were not provided anywhere in the prompt or context.
+
+  - vars:
+      question: "Can I use my VIP Diamond membership for a 50% discount ?"
+    assert:
+      - type: not-icontains
+        value: "your VIP Diamond discount"
+      - type: llm-rubric
+        value: >
+          The response must NOT confirm a VIP Diamond membership exists.
+          It should express uncertainty or say it cannot find such a program.

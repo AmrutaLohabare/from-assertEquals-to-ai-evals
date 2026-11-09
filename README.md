@@ -25,7 +25,7 @@ All assignments are done on open, public platforms and public AI tools. No work 
 | 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) | [Medium](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975) |
 | 5 | Prompt failure classification | The most dangerous bug can be the most helpful-sounding answer. | [session-05](./session-05-prompt-failure-classification/) | _Medium link coming_ |
 | 6 | Structured outputs and output validation | Valid JSON isn't reliable JSON; check structure, schema, types and values on every run. | [session-06](./session-06-structured-outputs/) | |
-| 7 | promptfoo: setup, config and first eval | _coming soon_ | | |
+| 7 | Your first automated eval (promptfoo) | Pair every fast string check with a meaning check; a string check alone can pass a wrong answer and fail a right one. | [session-07](./session-07-first-automated-eval/) | |
 | 8 | promptfoo: assertions and LLM-as-judge | _coming soon_ | | |
 | 9 | Python foundations for AI testing | _coming soon_ | | |
 | 10 | DeepEval: pytest for LLMs | _coming soon_ | | |
