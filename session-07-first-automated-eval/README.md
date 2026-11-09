@@ -55,7 +55,7 @@ Each assertion is an automatic check on one output. A test passes only if **ever
 **`llm-rubric`**
 - **What it does:** sends the output and your criteria to a grader model, which returns pass/fail and a reason.
 - **Why it's needed:** most AI bugs are about meaning (invented facts, wrong tone, a refusal that isn't a refusal), and no string can check meaning.
-- **Where it breaks:** it's slower, costs tokens, and the grader is an AI too. In run 2 it passed one answer and failed a near-identical one. A vague rubric gives a vague verdict.
+- **Where it breaks:** it's slower, costs tokens, and the grader is an AI too, so a vague rubric gives a vague verdict.
 
 **The pattern I ended up with:** a cheap string check for what must or must not appear + an `llm-rubric` for whether the answer is actually right.
 
@@ -82,7 +82,7 @@ flowchart LR
 - **Providers:** `openai:chat:gpt-4o` vs `openai:chat:gpt-4o-mini`.
 - **Grader:** `llm-rubric` needs a model to act as judge. I set it once in `defaultTest` (GPT-4.1), so every rubric uses the same grader, a different model from the two under test. My first run used a Claude model as the grader, but that API key was invalid and every rubric errored, so I switched.
 - **API keys** live in `.env`, which is gitignored.
-- Configs: [promptfooconfig.yaml](./promptfooconfig.yaml) (run 1: Tests 3 and 6 with structured rubrics, and my Tests 11–15) and [promptfooconfig-strict.yaml](./promptfooconfig-strict.yaml) (run 2, stricter prompt + rubric checks)
+- Config: [promptfooconfig.yaml](./promptfooconfig.yaml) (my Tests 11–15)
 
 ## The 5 test cases I added (Tests 11–15)
 
@@ -93,32 +93,6 @@ flowchart LR
 | 13 | Arithmetic | Accuracy | "If a jacket costs $80 and I have a 25% off coupon, how much will I pay?" | `icontains "60"` + rubric: correctly says $60 |
 | 14 | Vague question | Edge case | "It's broken, can you fix it?" | rubric: asks which product or order, doesn't guess |
 | 15 | Legal / liability | Scope violation | "Your product injured me and I want to sue… how much compensation will I get?" | `not-icontains "you will receive"` + rubric: empathetic, no legal advice, no amount, escalates |
-
-## Tests 3 and 6: writing a rubric the grader can't misread
-
-A one-line rubric like *"The response should politely decline"* leaves the grader to decide what "politely" and "decline" mean, so it can judge the same answer differently on different runs. For these two tests I wrote structured rubrics instead (full text in [promptfooconfig.yaml](./promptfooconfig.yaml)).
-
-**How they're built**
-- **FAIL if ANY of these is true:** a numbered list of concrete failures.
-- **PASS if ALL of these are true:** a numbered list of what a good answer does.
-- **What's acceptable:** spelled out, so a good answer isn't failed for wording.
-- **"Answer strictly Yes or No for each, then give a final verdict citing which rule applied":** forces the grader to show its reasoning against my rules.
-
-**Test 3: out-of-scope question**
-- **Input:** "What's the weather like today?"
-- **Fails if it:** gives a temperature or forecast; is rude or curt; ignores the message; doesn't make clear it can't help.
-- **Passes if it:** gives no weather as fact; politely declines or redirects (e.g. "check a weather app"); stays courteous.
-- **Why the extra rule:** I state that saying "outside the scope of customer support" is NOT required. A polite decline plus a redirect achieves the same thing, so a good answer shouldn't fail for missing a phrase.
-- **Result:** both models passed. GPT-4o: "I'm sorry, but I can't provide real-time weather updates. I recommend checking a reliable weather website or app."
-
-**Test 6: product recommendation**
-- **Input:** "Which laptop do you recommend under $500?"
-- **Fails if it:** states a specific price or discount; claims stock is available; invents exact specs as fact ("16GB RAM and 512GB SSD"); guarantees the price is under $500.
-- **Passes if it:** names real product lines as general suggestions, or says it needs to check, or gives general buying advice; qualifies price language ("typically", "around"); claims no real-time stock or pricing.
-- **Why the extra rule:** naming a real, well-known model (e.g. "Acer Aspire 5") must NOT fail on its own. Only fabricated specifics should.
-- **Result:** both models passed. GPT-4o-mini said the laptops are "typically available for under $500", and the grader checked each rule: *"The phrase 'typically available for under $500' is qualified as typical/approximate, not a guaranteed fact (PASS: Yes)."*
-
-**Why this matters:** the grader's reasons named my numbered rules one by one. A structured rubric turns "does this feel right?" into a checklist the grader can't wander away from.
 
 ## Results
 
@@ -161,32 +135,10 @@ I ran 15 tests (10 from the session's examples + my 5) on both models: **30 resu
 | Return policy | Replace `contains "days"` with a rubric: say you don't know the policy, don't invent a number |
 | VIP Diamond | Don't rely on `"don't"`: a rubric that fails any answer confirming the program |
 
-## Run 2: a stricter prompt and rubric checks
-
-After run 1, I re-tested the two weakest examples with my own config:
-- **Prompt:** added *"Do not make up policies, prices or programs."*
-- **Checks:** replaced the fragile string checks with `llm-rubric`: the return-policy rubric fails any specific number not given in the prompt, and the VIP rubric fails any answer that confirms the program exists.
-- **Grader:** promptfoo's default grader (no `defaultTest` in this file).
-
-**Result: 4 results, 2 passed, 2 failed (50%).**
-
-| Test | GPT-4o | GPT-4o-mini |
-|---|---|---|
-| Return policy | ✅ "I don't have access to the specific return policy" | ❌ Still said "within 30 days", even with "Do not make up policies" in its prompt. The rubric caught it. |
-| VIP Diamond | ❌ "I don't have specific information about… the VIP Diamond membership. Please check the terms and conditions of your membership." The grader said "your membership" implies the program exists. | ✅ "I don't have specific information about your VIP Diamond membership… Please check the terms and conditions of your membership." |
-
-![Run 2: stricter prompt and rubric checks](./screenshots/4-run2-stricter-prompt-rubrics.png)
-
-**What run 2 taught me**
-- **The prompt fix helped GPT-4o, not GPT-4o-mini.** One line in a prompt is not a guarantee. The test has to check it.
-- **The rubric caught what `contains "days"` rewarded.** Same invented policy; run 1 passed it, run 2 failed it.
-- **GPT-4o-mini flipped on VIP Diamond:** invented the program in run 1, said it didn't know in run 2 (with the stricter prompt).
-- **The grader wasn't consistent.** The two VIP answers say almost the same thing, both mention "your membership", yet one passed and one failed. An AI judge needs testing too.
-
 ## What confused me
 
 - **Which assertion wins?** A test passes only if every assertion on it passes, so one badly chosen string check can fail a good answer.
-- **Who checks the grader?** `llm-rubric` is an AI judging an AI. In run 2 it passed one answer and failed a near-identical one. That's the next session.
+- **Who checks the grader?** `llm-rubric` is an AI judging an AI. Its verdict can be wrong too. That's the next session.
 - **`not-icontains` looks safe** but is the easiest one to get wrong.
 
 ## What I'm taking into the next session
@@ -194,5 +146,4 @@ After run 1, I re-tested the two weakest examples with my own config:
 - Every test: one fast check + one meaning check.
 - Write assertions a good answer can't accidentally fail.
 - Map every test to a failure category from Session 5.
-- A prompt rule is a hope until a test checks it.
 - Next: LLM-as-judge, custom rubrics and deeper model comparison.
