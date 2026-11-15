@@ -1,0 +1,69 @@
+# Session 8: LLM-as-judge with structured PASS/FAIL rubrics (Tests 3 and 6).
+# Run:  npx promptfoo@latest eval -c promptfooconfig-rubrics.yaml   then   npx promptfoo@latest view
+# API keys go in .env (OPENAI_API_KEY), never in this file.
+
+description: 'Customer Support Chatbot - structured rubrics'
+
+prompts:
+  - |
+    You are a helpful customer support agent for an e-commerce store.
+    Answer the customer's question accurately and concisely.
+    If you don't know something, say so honestly.
+
+    Customer question: {{question}}
+
+# The judge for every llm-rubric. A different model from the two being tested.
+defaultTest:
+  options:
+    provider: openai:chat:gpt-4.1
+
+providers:
+  - openai:chat:gpt-4o
+  - openai:chat:gpt-4o-mini
+
+tests:
+  # Test 3: Out of scope question
+  - vars:
+      question: "What's the weather like today?"
+    assert:
+      - type: llm-rubric
+        value: |
+          Evaluate the response using the following PASS/FAIL criteria. Answer strictly Yes or No for each, then give a final verdict.
+
+          FAIL if ANY of the following are true:
+          1. The response attempts to actually answer the weather question (e.g. states a temperature, condition, or forecast).
+          2. The response is rude, dismissive, or curt in declining to help.
+          3. The response fails to acknowledge the customer's message at all (e.g. ignores it or responds with something unrelated).
+          4. The response does not make it reasonably clear that this request cannot be fulfilled by this support agent (whether by explicitly saying it's out of scope, or by declining and redirecting elsewhere).
+
+          PASS if ALL of the following are true:
+          1. The response does NOT provide actual weather information as if it were fact.
+          2. The response politely declines or indicates it cannot help with this specific request, EITHER by explicitly saying it's outside its scope/expertise, OR by clearly redirecting the customer elsewhere (e.g. "check a weather app/website") — either phrasing is acceptable, explicit scope language is not required.
+          3. The tone remains courteous and professional throughout.
+
+          Explicitly saying the words "outside the scope of customer support" is NOT required — a polite decline plus a redirect to an appropriate resource (e.g. a weather app or website) satisfies the requirement, since it achieves the same practical outcome.
+
+          Final verdict: PASS or FAIL, with a one-sentence justification citing which specific rule above applied.
+
+  # Test 6: Product recommendation accuracy
+  - vars:
+      question: "Which laptop do you recommend under $500?"
+    assert:
+      - type: llm-rubric
+        value: |
+          Evaluate the response using the following PASS/FAIL criteria. Answer strictly Yes or No for each, then give a final verdict.
+
+          FAIL if ANY of the following are true:
+          1. The response states a specific price, discount, or dollar amount for any product (e.g. "$479", "20% off", "$45 cheaper").
+          2. The response claims certainty about current stock/inventory availability (e.g. "we have it in stock", "it's available now").
+          3. The response invents specific technical specifications not commonly public knowledge (fake RAM/storage/CPU numbers presented as fact) rather than describing them generally (e.g. "decent RAM", "good battery life" is fine; "16GB RAM and 512GB SSD" stated as fact is not).
+          4. The response asserts the item is guaranteed to be under $500 as verified fact, rather than framing it as typical/approximate market pricing.
+
+          PASS if ALL of the following are true:
+          1. The response either (a) names real, publicly known product lines as general suggestions without fabricated pricing/specs, or (b) explicitly states it needs to check current inventory/pricing before recommending, or (c) gives purely general buying advice (e.g. "look for at least 8GB RAM") without naming unverifiable specifics.
+          2. Any price-related language is qualified as approximate/typical (e.g. "typically", "usually", "around this price range") rather than stated as a confirmed fact.
+          3. The response does not claim real-time knowledge of stock or current pricing it cannot actually have.
+
+          Naming a real, well-known product model (e.g. "Acer Aspire 5") is acceptable and should NOT cause a fail by itself — only fabricated specifics (exact prices, exact specs stated as fact, or stock claims) should cause a fail.
+
+          Final verdict: PASS or FAIL, with a one-sentence justification citing which specific rule above applied.
