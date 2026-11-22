@@ -17,22 +17,22 @@ All assignments are done on open, public platforms and public AI tools. No work 
 
 ## Journey index
 
-| Session | Topic | Key lesson | Notes | Write-up |
-|------|-------|------------|-------|----------|
-| 1 | What is AI/ML, from a tester's view | An LLM predicts what *sounds* right. It doesn't know what *is* right. | [week-01](./week-01-what-is-ai/) | [Medium](https://medium.com/@amrutalohabare/37fb43b62e14) |
-| 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) | [Medium](https://medium.com/@amrutalohabare/tokens-set-the-cost-probability-picks-the-word-temperature-decides-the-risk-d87c197e9d50) |
-| 3 | AI architecture: what we actually test | Know the type (LLM, RAG, agent) before you write a single test. | [session-03](./session-03-ai-architectures/) | [Medium](https://medium.com/@amrutalohabare/every-ai-chatbot-looks-the-same-the-bugs-dont-e0c2f7a4dd21) |
-| 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) | [Medium](https://medium.com/@amrutalohabare/title-i-told-my-hr-bot-a-lie-it-emailed-the-whole-company-8b613630a975) |
-| 5 | Prompt failure classification | The most dangerous bug can be the most helpful-sounding answer. | [session-05](./session-05-prompt-failure-classification/) | _Medium link coming_ |
-| 6 | Structured outputs and output validation | Valid JSON isn't reliable JSON; check structure, schema, types and values on every run. | [session-06](./session-06-structured-outputs/) | |
-| 7 | Your first automated eval (promptfoo) | Pair every fast string check with a meaning check; a string check alone can pass a wrong answer and fail a right one. | [session-07](./session-07-first-automated-eval/) | |
-| 8 | LLM-as-judge and custom rubrics (promptfoo) | A rubric is part of the test: one clear yes/no question, a judge that isn't under test, and run it more than once. | [session-08](./session-08-llm-as-judge/) | |
-| 9 | Python foundations for AI testing | _coming soon_ | | |
-| 10 | DeepEval: pytest for LLMs | _coming soon_ | | |
-| 11 | Hallucination detection | _coming soon_ | | |
-| 12 | RAG testing fundamentals | _coming soon_ | | |
-| 13 | LLM API testing | _coming soon_ | | |
-| 14 | Chatbot UI testing with Playwright | _coming soon_ | | |
+| Session | Topic | Key lesson | Notes |
+|------|-------|------------|-------|
+| 1 | What is AI/ML, from a tester's view | An LLM predicts what *sounds* right. It doesn't know what *is* right. | [week-01](./week-01-what-is-ai/) |
+| 2 | Tokens, probabilities and temperature | Temperature changes the words, not whether the bot follows its rules. | [session-02](./session-02-tokens-temperature/) |
+| 3 | AI architecture: what we actually test | Know the type (LLM, RAG, agent) before you write a single test. | [session-03](./session-03-ai-architectures/) |
+| 4 | Prompt engineering fundamentals | A prompt with all 6 parts can still break; test what the rules don't say. | [session-04](./session-04-prompt-engineering/) |
+| 5 | Prompt failure classification | The most dangerous bug can be the most helpful-sounding answer. | [session-05](./session-05-prompt-failure-classification/) |
+| 6 | Structured outputs and output validation | Valid JSON isn't reliable JSON; check structure, schema, types and values on every run. | [session-06](./session-06-structured-outputs/) |
+| 7 | Your first automated eval (promptfoo) | Pair every fast string check with a meaning check; a string check alone can pass a wrong answer and fail a right one. | [session-07](./session-07-first-automated-eval/) |
+| 8 | LLM-as-judge and custom rubrics (promptfoo) | A rubric is part of the test: one clear yes/no question, a judge that isn't under test, and run it more than once. | [session-08](./session-08-llm-as-judge/) |
+| 9 | DeepEval basics: pytest for LLMs | A score is only as meaningful as the test case behind it: faithfulness passed a number that wasn't in the context. | [session-09](./session-09-deepeval-basics/) |
+| 10 | DeepEval in practice: hallucination, toxicity and bias metrics | _coming soon_ | |
+| 11 | Hallucination detection: techniques and automation | _coming soon_ | |
+| 12 | RAG testing fundamentals | _coming soon_ | |
+| 13 | LLM API testing | _coming soon_ | |
+| 14 | Chatbot UI testing with Playwright | _coming soon_ | |
 
 ---
 

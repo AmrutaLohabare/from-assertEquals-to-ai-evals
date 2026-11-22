@@ -1,7 +1,5 @@
 # Session 2: Tokens, probabilities and temperature
 
-**Write-up:** [Tokens Set the Cost. Probability Picks the Word. Temperature Decides the Risk.](https://medium.com/@amrutalohabare/tokens-set-the-cost-probability-picks-the-word-temperature-decides-the-risk-d87c197e9d50)
-
 ## Concepts
 
 **Tokens**
