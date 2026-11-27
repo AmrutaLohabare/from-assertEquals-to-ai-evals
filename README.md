@@ -28,7 +28,7 @@ All assignments are done on open, public platforms and public AI tools. No work 
 | 7 | Your first automated eval (promptfoo) | Pair every fast string check with a meaning check; a string check alone can pass a wrong answer and fail a right one. | [session-07](./session-07-first-automated-eval/) |
 | 8 | LLM-as-judge and custom rubrics (promptfoo) | A rubric is part of the test: one clear yes/no question, a judge that isn't under test, and run it more than once. | [session-08](./session-08-llm-as-judge/) |
 | 9 | DeepEval basics: pytest for LLMs | A score is only as meaningful as the test case behind it: faithfulness passed a number that wasn't in the context. | [session-09](./session-09-deepeval-basics/) |
-| 10 | DeepEval in practice: hallucination, toxicity and bias metrics | _coming soon_ | |
+| 10 | DeepEval in practice: hallucination, toxicity and bias metrics | Know which way a score points, and give every safety test a chance to fail. | [session-10](./session-10-deepeval-in-practice/) |
 | 11 | Hallucination detection: techniques and automation | _coming soon_ | |
 | 12 | RAG testing fundamentals | _coming soon_ | |
 | 13 | LLM API testing | _coming soon_ | |
